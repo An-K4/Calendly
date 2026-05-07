@@ -34,6 +34,15 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    // avoid conflict with ical4j
+    packaging {
+        resources {
+            excludes += "META-INF/groovy/**"
+            excludes += "META-INF/groovy-release-info.properties"
+            excludes += "META-INF/INDEX.LIST"  // thêm dòng này
+        }
+    }
+
     buildFeatures {
         viewBinding = true
     }
