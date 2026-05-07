@@ -630,7 +630,7 @@ MainActivity (BottomNavigationView)
 - [✓] Đọc: MVP pattern – hiểu rõ Contract, View, Presenter
 
 ### Ngày 3–4: Dựng MVP skeleton
-- [ ] Tạo `MainActivity` với `BottomNavigationView` (3 tab: Lịch, Nguồn, +)
+- [✓] Tạo `MainActivity` với `BottomNavigationView` (3 tab: Lịch, Nguồn, +)
 - [ ] Tạo `CalendarFragment` (placeholder) theo MVP
 - [ ] Kiểm tra: Fragment hiển thị, Presenter gọi được, không crash
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_calendar"
+        android:icon="@drawable/ic_calendar_month"
+        android:title="@string/calendar_month"/>
+    <item
+        android:id="@+id/nav_day"
+        android:icon="@drawable/ic_view_day"
+        android:title="@string/event"/>
+    <item
+        android:id="@+id/nav_sources"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"/>
+</menu>
