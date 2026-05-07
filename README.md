@@ -631,16 +631,16 @@ MainActivity (BottomNavigationView)
 
 ### Ngày 3–4: Dựng MVP skeleton
 - [✓] Tạo `MainActivity` với `BottomNavigationView` (3 tab: Lịch, Nguồn, +)
-- [ ] Tạo `CalendarFragment` (placeholder) theo MVP
-- [ ] Kiểm tra: Fragment hiển thị, Presenter gọi được, không crash
+- [✓] Tạo `CalendarFragment` (placeholder) theo MVP
+- [✓] Kiểm tra: Fragment hiển thị, Presenter gọi được, không crash
 
 ### Ngày 5–7: Room DB + Model
-- [ ] Tạo `Event.java` (@Entity)
-- [ ] Tạo `CalendarSource.java` (@Entity)
-- [ ] Tạo `EventDao.java` với các query cơ bản
-- [ ] Tạo `AppDatabase.java` (Room singleton)
-- [ ] Tạo `EventRepository.java`
-- [ ] Test insert/query bằng log
+- [✓] Tạo `Event.java` (@Entity)
+- [✓] Tạo `CalendarSource.java` (@Entity)
+- [✓] Tạo `EventDao.java` với các query cơ bản
+- [✓] Tạo `AppDatabase.java` (Room singleton)
+- [✓] Tạo `EventRepository.java`
+- [✓] Test insert/query bằng log
 
 **✅ Checkpoint tuần 1:** App khởi động, navigation hoạt động, DB tạo thành công.
 

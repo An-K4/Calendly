@@ -1,10 +1,6 @@
 package com.example.calendly.ui.main;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,7 +12,6 @@ import com.example.calendly.databinding.ActivityMainBinding;
 import com.example.calendly.ui.calendar.CalendarFragment;
 import com.example.calendly.ui.day.DayViewFragment;
 import com.example.calendly.ui.sources.SourceManagerFragment;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
