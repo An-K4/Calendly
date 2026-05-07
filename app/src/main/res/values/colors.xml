@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#1565C0</color>         <!-- deep blue -->
+    <color name="primary_light">#E3F2FD</color>   <!-- light blue highlight background -->
+    <color name="accent">#FF6F00</color>           <!-- orange – today indicator -->
+    <color name="event_personal">#4CAF50</color>   <!-- green – personal event color -->
+    <color name="event_work">#2196F3</color>       <!-- blue - work event color -->
+    <color name="lunar_text">#9E9E9E</color>       <!-- gray – lunar day -->
+</resources>
