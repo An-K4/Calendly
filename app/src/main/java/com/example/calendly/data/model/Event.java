@@ -15,6 +15,7 @@ public class Event {
     public String description;
     public String organizer;
     public String location;
+    public Long reminderMinutes;
     public int sourceId;
     public boolean isAllDay;
 }
