@@ -28,6 +28,7 @@ public class AddEventPresenter implements AddEventContract.Presenter {
             String description,
             String organizer,
             String location,
+            Long reminderMinutes,
             boolean isAllDay
     ) {
         if (title == null || title.trim().isEmpty()) {
@@ -66,9 +67,11 @@ public class AddEventPresenter implements AddEventContract.Presenter {
             newEvent.title = title.trim();
             newEvent.startTimeMillis = startTimeMillis;
             newEvent.endTimeMillis = endTimeMillis;
-            newEvent.description = description == null ? "" : description;
-            newEvent.organizer = organizer == null ? "" : organizer;
-            newEvent.location = location == null ? "" : location;
+            newEvent.description = description == null ? "" : description.trim();
+            newEvent.organizer = organizer == null ? "" : organizer.trim();
+            newEvent.location = location == null ? "" : location.trim();
+            newEvent.reminderMinutes = reminderMinutes;
+            newEvent.sourceId = 0;
             newEvent.isAllDay = isAllDay;
 
             repository.addEvent(newEvent);

@@ -21,4 +21,10 @@
     <string name="add_event">Thêm sự kiện</string>
     <string name="time">Thời gian</string>
     <string name="event_name_icon">event name icon</string>
+    <string name="calendar_source_and_notification">Nguồn lịch và thông báo</string>
+    <string name="duration">Thời lượng</string>
+    <string name="minute">Phút</string>
+    <string name="notification_before_event">Thông báo trước khi sự kiện diễn ra</string>
+    <string name="week">Tuần</string>
+    <string name="disable_notification">Tắt thông báo</string>
 </resources>

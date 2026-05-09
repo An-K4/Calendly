@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.calendly.R;
 import com.example.calendly.data.repository.EventRepository;
 import com.example.calendly.databinding.ActivityAddEventBinding;
 
@@ -64,6 +65,10 @@ public class AddEventActivity extends AppCompatActivity implements AddEventContr
                 binding.tvEndTimePicker.setVisibility(View.VISIBLE);
             }
         });
+        binding.checkboxDisableNotification.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            binding.layoutNotification.setVisibility(isChecked ? View.GONE : View.VISIBLE);
+        });
+
         binding.tvStartDayPicker.setOnClickListener(view -> {
             showDatePicker(selectedStartDate, true);
         });
@@ -92,6 +97,7 @@ public class AddEventActivity extends AppCompatActivity implements AddEventContr
             String description = binding.etDescription.getText().toString();
             String organizer = binding.etOrganizer.getText().toString();
             String location = binding.etLocation.getText().toString();
+            Long reminderMinutes = getReminderMinute() == -1 ? null : getReminderMinute();
             boolean isAllDay = binding.checkboxAddDay.isChecked();
 
             presenter.saveEvent(
@@ -103,6 +109,7 @@ public class AddEventActivity extends AppCompatActivity implements AddEventContr
                     description,
                     organizer,
                     location,
+                    reminderMinutes,
                     isAllDay
             );
         });
@@ -165,5 +172,25 @@ public class AddEventActivity extends AppCompatActivity implements AddEventContr
         );
 
         dialog.show();
+    }
+
+    private long getReminderMinute() {
+        if (binding.checkboxDisableNotification.isChecked()){
+            return -1;
+        } else {
+            try {
+                String durationStr = binding.edNotificationDuration.getText() == null ? "0" : binding.edNotificationDuration.getText().toString().trim();
+                long duration = Long.parseLong(durationStr);
+
+                int checkedId = binding.rgReminderUnit.getCheckedRadioButtonId();
+
+                if (checkedId == R.id.rb_hour) return duration * 60;
+                if (checkedId == R.id.rb_day) return duration * 60 * 24;
+                if (checkedId == R.id.rb_week) return duration * 60 * 24 * 7;
+                return duration;
+            } catch (Exception e){
+                return 0;
+            }
+        }
     }
 }

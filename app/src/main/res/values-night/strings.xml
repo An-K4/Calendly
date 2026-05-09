@@ -19,4 +19,10 @@
     <string name="add_new_event">add new event</string>
     <string name="add_event">Thêm sự kiện</string>
     <string name="time">Thời gian</string>
+    <string name="calendar_source_and_notification">Nguồn lịch và thông báo</string>
+    <string name="duration">Thời lượng</string>
+    <string name="minute">Phút</string>
+    <string name="notification_before_event">Thông báo</string>
+    <string name="week">Tuần</string>
+    <string name="disable_notification">Tắt thông báo</string>
 </resources>

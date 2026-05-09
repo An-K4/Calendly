@@ -27,21 +27,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:layout_marginHorizontal="10dp"
-                android:gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:contentDescription="@string/event_name"
-                    android:src="@drawable/ic_calendar_month"
-                    android:layout_marginEnd="8dp" />
+                    android:src="@drawable/ic_calendar_month" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
                     android:hint="@string/event_name">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -55,10 +55,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/time"
-                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
-                android:layout_marginHorizontal="10dp"/>
+                android:text="@string/time"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,8 +119,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
@@ -135,10 +135,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:background="?attr/selectableItemBackground"
+                        android:paddingVertical="10dp"
                         android:text="@string/day"
                         android:textAlignment="center"
-                        android:textSize="16sp"
-                        android:paddingVertical="10dp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_end_time_picker"
@@ -146,26 +146,104 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="?attr/selectableItemBackground"
+                        android:paddingVertical="10dp"
                         android:text="@string/hour"
                         android:textAlignment="center"
-                        android:textSize="16sp"
-                        android:paddingVertical="10dp"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/another_info"
-                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
-                android:layout_marginHorizontal="10dp"/>
+                android:text="@string/notification_before_event"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/checkbox_disable_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/disable_notification"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_rounded"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/duration">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_notification_duration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="15"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RadioGroup
+                    android:id="@+id/rg_reminder_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/minute" />
+
+                    <RadioButton
+                        android:id="@+id/rb_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/hour" />
+
+                    <RadioButton
+                        android:id="@+id/rb_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/day" />
+
+                    <RadioButton
+                        android:id="@+id/rb_week"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/week" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:text="@string/another_info"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -173,13 +251,13 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:contentDescription="@string/description"
-                    android:src="@drawable/ic_description"/>
+                    android:src="@drawable/ic_description" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
                     android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
                     android:hint="@string/description">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -193,8 +271,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -202,13 +280,13 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:contentDescription="@string/organizer"
-                    android:src="@drawable/ic_organizer"/>
+                    android:src="@drawable/ic_organizer" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
                     android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
                     android:hint="@string/organizer">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -222,8 +300,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -231,13 +309,13 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:contentDescription="@string/location"
-                    android:src="@drawable/ic_location"/>
+                    android:src="@drawable/ic_location" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
                     android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
                     android:hint="@string/location">
 
                     <com.google.android.material.textfield.TextInputEditText

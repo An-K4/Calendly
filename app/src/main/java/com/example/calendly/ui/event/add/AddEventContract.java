@@ -24,6 +24,7 @@ public interface AddEventContract {
                 String description,
                 String organizer,
                 String location,
+                Long reminderMinutes,
                 boolean isAllDay
         );
     }
