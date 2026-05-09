@@ -651,9 +651,9 @@ MainActivity (BottomNavigationView)
 **Mục tiêu:** Tạo sự kiện từ UI, lưu DB, hiển thị danh sách theo ngày.
 
 ### Ngày 8–10: Màn hình Thêm Sự Kiện
-- [ ] Tạo `AddEventActivity` + `AddEventContract` + `AddEventPresenter`
-- [ ] Layout với TextInput, DateTimePicker, Spinner thông báo, Button Lưu
-- [ ] Presenter gọi `repository.saveEvent(event)` trên background thread
+- [✓] Tạo `AddEventActivity` + `AddEventContract` + `AddEventPresenter`
+- [✓] Layout với TextInput, DateTimePicker, Spinner thông báo, Button Lưu
+- [✓] Presenter gọi `repository.saveEvent(event)` trên background thread
 
 ### Ngày 11–13: Xem Sự Kiện Theo Ngày
 - [ ] Tạo `DayViewFragment` + MVP
