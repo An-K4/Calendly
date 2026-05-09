@@ -6,4 +6,19 @@
     <string name="calendar_fragment">Calendar Fragment</string>
     <string name="day_view_fragment">Day View Fragment</string>
     <string name="source_manager_fragment">Source Manager Fragment</string>
+    <string name="event_name">Tên sự kiện</string>
+    <string name="all_day">Cả ngày</string>
+    <string name="from">Từ:</string>
+    <string name="day">Ngày</string>
+    <string name="hour">Giờ</string>
+    <string name="to">Tới:</string>
+    <string name="description">Mô tả</string>
+    <string name="organizer">Người tổ chức</string>
+    <string name="location">Địa điểm</string>
+    <string name="save_event">Lưu sự kiện</string>
+    <string name="another_info">Tùy chọn khác</string>
+    <string name="add_new_event">add new event</string>
+    <string name="add_event">Thêm sự kiện</string>
+    <string name="time">Thời gian</string>
+    <string name="event_name_icon">event name icon</string>
 </resources>

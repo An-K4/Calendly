@@ -1,6 +1,8 @@
 package com.example.calendly.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -11,6 +13,7 @@ import com.example.calendly.R;
 import com.example.calendly.databinding.ActivityMainBinding;
 import com.example.calendly.ui.calendar.CalendarFragment;
 import com.example.calendly.ui.day.DayViewFragment;
+import com.example.calendly.ui.event.add.AddEventActivity;
 import com.example.calendly.ui.sources.SourceManagerFragment;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
@@ -42,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         if (savedInstanceState == null){
             binding.bottomNavigation.setSelectedItemId(R.id.nav_calendar);
         }
+
+        binding.fabAddNewEvent.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddEventActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
