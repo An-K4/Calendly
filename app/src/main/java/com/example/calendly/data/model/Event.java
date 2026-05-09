@@ -12,8 +12,9 @@ public class Event {
     public String title;
     public long startTimeMillis;
     public long endTimeMillis;
-    public String location;
+    public String description;
     public String organizer;
+    public String location;
     public int sourceId;
     public boolean isAllDay;
 }
