@@ -48,7 +48,7 @@ public class AddEventPresenter implements AddEventContract.Presenter {
             }
 
             if (start.isAfter(end) || start.isEqual(end)) {
-                view.showError("Thời gian bắt đầu không được sau thời gian kết thúc");
+                view.showError("Thời gian bắt đầu không được muộn hơn thời gian kết thúc");
                 return;
             }
 
