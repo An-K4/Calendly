@@ -39,7 +39,7 @@ android {
         resources {
             excludes += "META-INF/groovy/**"
             excludes += "META-INF/groovy-release-info.properties"
-            excludes += "META-INF/INDEX.LIST"  // thêm dòng này
+            excludes += "META-INF/INDEX.LIST"
         }
     }
 

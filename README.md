@@ -315,28 +315,34 @@ CalendarApp/
 │   │       │   │       └── ReminderReceiver.java  # BroadcastReceiver nhận alarm
 │   │       │   │
 │   │       │   ├── ui/                            # LAYER: View + Presenter
-│   │       │   │   ├── main/
+│   │       │   │   │
+│   │       │   │   ├── main/                      # Màn hình chính (container)
 │   │       │   │   │   ├── MainActivity.java
 │   │       │   │   │   └── MainContract.java
-│   │       │   │   ├── calendar/
+│   │       │   │   │
+│   │       │   │   ├── calendar/                  # Xem lịch (ngày/tháng/năm)
 │   │       │   │   │   ├── CalendarFragment.java
 │   │       │   │   │   ├── CalendarPresenter.java
 │   │       │   │   │   └── CalendarContract.java
-│   │       │   │   ├── day/
-│   │       │   │   │   ├── DayViewFragment.java
-│   │       │   │   │   ├── DayViewPresenter.java
-│   │       │   │   │   ├── DayViewContract.java
-│   │       │   │   │   └── EventAdapter.java
+│   │       │   │   │
+│   │       │   │   ├── agenda/                    # Xem sự kiện theo năm (Agenda)
+│   │       │   │   │   ├── AgendaFragment.java
+│   │       │   │   │   ├── AgendaPresenter.java
+│   │       │   │   │   ├── AgendaContract.java
+│   │       │   │   │   ├── AgendaAdapter.java      # Multiple ViewType: header ngày + event
+│   │       │   │   │   └── YearSelectorAdapter.java # HorizontalRecyclerView chọn năm
+│   │       │   │   │
 │   │       │   │   ├── event/
-│   │       │   │   │   ├── detail/
+│   │       │   │   │   ├── detail/                # Chi tiết sự kiện
 │   │       │   │   │   │   ├── EventDetailActivity.java
 │   │       │   │   │   │   ├── EventDetailPresenter.java
 │   │       │   │   │   │   └── EventDetailContract.java
-│   │       │   │   │   └── add/
+│   │       │   │   │   └── add/                   # Thêm sự kiện mới
 │   │       │   │   │       ├── AddEventActivity.java
 │   │       │   │   │       ├── AddEventPresenter.java
 │   │       │   │   │       └── AddEventContract.java
-│   │       │   │   └── sources/
+│   │       │   │   │
+│   │       │   │   └── sources/                   # Quản lý file ICS đã nhập
 │   │       │   │       ├── SourceManagerFragment.java
 │   │       │   │       ├── SourceManagerPresenter.java
 │   │       │   │       ├── SourceManagerContract.java
@@ -355,15 +361,15 @@ CalendarApp/
 │   │           │   ├── fragment_calendar.xml
 │   │           │   ├── fragment_day_view.xml
 │   │           │   ├── fragment_source_manager.xml
-│   │           │   ├── item_event.xml
-│   │           │   └── item_source.xml
+│   │           │   ├── item_event.xml             # RecyclerView item – sự kiện
+│   │           │   └── item_source.xml            # RecyclerView item – file lịch
 │   │           ├── drawable/
 │   │           ├── values/
 │   │           │   ├── colors.xml
 │   │           │   ├── strings.xml
 │   │           │   └── themes.xml
 │   │           └── xml/
-│   │               └── file_paths.xml
+│   │               └── file_paths.xml             # FileProvider paths
 │   │
 │   └── build.gradle
 └── build.gradle
@@ -553,9 +559,10 @@ dependencies {
 ```
 MainActivity (BottomNavigationView)
 ├── Tab 1: CalendarFragment          ← Xem lịch chính (ngày/tháng/năm)
-│     └── [click ngày] → DayViewFragment
-│           └── [click sự kiện] → EventDetailActivity
-├── Tab 2: SourceManagerFragment     ← Quản lý file .ics đã nhập
+│     └── [click ngày] → AgendaFragment scroll đến ngày đó
+├── Tab 2: AgendaFragment            ← Xem toàn bộ sự kiện theo năm (agenda view)
+│     └── [click sự kiện] → EventDetailActivity
+├── Tab 3: SourceManagerFragment     ← Quản lý file .ics đã nhập
 │     └── [+ import] → FilePicker → import flow
 └── FAB (+): AddEventActivity        ← Tạo sự kiện mới
 ```
@@ -655,11 +662,16 @@ MainActivity (BottomNavigationView)
 - [✓] Layout với TextInput, DateTimePicker, Spinner thông báo, Button Lưu
 - [✓] Presenter gọi `repository.saveEvent(event)` trên background thread
 
-### Ngày 11–13: Xem Sự Kiện Theo Ngày
-- [ ] Tạo `DayViewFragment` + MVP
-- [ ] Layout: RecyclerView danh sách sự kiện trong ngày
-- [ ] `EventAdapter.java` + `item_event.xml` (tên, giờ, màu nguồn)
-- [ ] Kết nối CalendarFragment → click ngày → DayViewFragment
+### Ngày 11–13: Màn hình Agenda (Xem sự kiện theo năm)
+- [ ] Tạo `AgendaFragment` + `AgendaContract` + `AgendaPresenter`
+- [ ] Layout `fragment_agenda.xml`:
+    - Toolbar: nút ◀ ▶ + HorizontalRecyclerView chọn năm (từ `năm hiện tại - 5` đến `năm sự kiện xa nhất + 5`)
+    - RecyclerView dọc chính: 2 ViewType — `TYPE_HEADER` (ngày) và `TYPE_EVENT` (sự kiện)
+- [ ] `AgendaAdapter.java` với Multiple ViewType + `AgendaListItem` (abstract), `AgendaHeaderItem`, `AgendaEventItem`
+- [ ] `YearSelectorAdapter.java` + `item_year.xml`
+- [ ] `item_agenda_header.xml` + `item_agenda_event.xml`
+- [ ] Presenter: group event theo ngày (TreeMap), build danh sách phẳng, tính range năm từ DB
+- [ ] Gắn vào tab tương ứng trong `MainActivity`
 
 ### Ngày 14: Kết nối & test
 - [ ] Tạo sự kiện → xem trong DayView → xác nhận data đúng
