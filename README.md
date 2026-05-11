@@ -326,6 +326,7 @@ CalendarApp/
 │   │       │   │   │   └── CalendarContract.java
 │   │       │   │   │
 │   │       │   │   ├── agenda/                    # Xem sự kiện theo năm (Agenda)
+│   │       │   │   │   ├── AgendaItem.java
 │   │       │   │   │   ├── AgendaFragment.java
 │   │       │   │   │   ├── AgendaPresenter.java
 │   │       │   │   │   ├── AgendaContract.java
