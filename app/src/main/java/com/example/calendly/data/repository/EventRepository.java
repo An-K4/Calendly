@@ -20,15 +20,33 @@ public class EventRepository {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    public interface DataCallBack<T>{
+    public interface DataCallBack<T> {
         void onDataLoaded(T data);
     }
 
-    public void addEvent(Event event){
-        executorService.execute(() -> eventDao.insertEvent(event)) ;
+    public void addEvent(Event event) {
+        executorService.execute(() -> eventDao.insertEvent(event));
     }
 
-    public void getAllEvents(DataCallBack<List<Event>> callBack){
+    public void getEventsBetween(long start, long end, DataCallBack<List<Event>> callBack) {
+        executorService.execute(() -> {
+            List<Event> events = eventDao.getEventsBetween(start, end);
+            callBack.onDataLoaded(events);
+        });
+    }
+
+    public void getMaxEndTimeMillis(DataCallBack<Long> callBack) {
+        executorService.execute(() -> {
+            long endTimeMillis = eventDao.getMaxEndtimeMillis();
+            callBack.onDataLoaded(endTimeMillis);
+        });
+    }
+
+    public void deleteEvent(int eventId){
+        executorService.execute(() -> eventDao.deleteEvent(eventId));
+    }
+
+    public void getAllEvents(DataCallBack<List<Event>> callBack) {
         executorService.execute(() -> {
             List<Event> events = eventDao.getAllEvents();
             callBack.onDataLoaded(events);
