@@ -62,7 +62,7 @@ public class AgendaPresenter implements AgendaContract.Presenter{
                     agendaItems.add(new AgendaItem(AgendaItem.TYPE_DATE_HEADER, eventDate));
                     lastDate = eventDate;
                 }
-                agendaItems.add(new AgendaItem(AgendaItem.TYPE_EVENT, eventDate));
+                agendaItems.add(new AgendaItem(AgendaItem.TYPE_EVENT, event));
             }
 
             mainHandler.post(() -> {
