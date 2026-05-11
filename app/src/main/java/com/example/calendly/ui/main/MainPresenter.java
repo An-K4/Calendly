@@ -14,7 +14,7 @@ public class MainPresenter implements MainContract.Presenter {
         if (itemId == R.id.nav_calendar) {
             view.showFragment("CALENDAR");
         } else if (itemId == R.id.nav_day) {
-            view.showFragment("DAY");
+            view.showFragment("AGENDA");
         } else if (itemId == R.id.nav_sources) {
             view.showFragment("SOURCES");
         }

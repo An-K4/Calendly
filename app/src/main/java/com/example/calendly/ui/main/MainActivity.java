@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.calendly.R;
 import com.example.calendly.databinding.ActivityMainBinding;
 import com.example.calendly.ui.calendar.CalendarFragment;
-import com.example.calendly.ui.day.DayViewFragment;
+import com.example.calendly.ui.agenda.AgendaFragment;
 import com.example.calendly.ui.event.add.AddEventActivity;
 import com.example.calendly.ui.sources.SourceManagerFragment;
 
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             case "CALENDAR":
                  fragment = new CalendarFragment();
                 break;
-            case "DAY":
-                 fragment = new DayViewFragment();
+            case "AGENDA":
+                 fragment = new AgendaFragment();
                 break;
             case "SOURCES":
                  fragment = new SourceManagerFragment();
