@@ -8,9 +8,9 @@
     <string name="source_manager_fragment">Source Manager Fragment</string>
     <string name="event_name">Tên sự kiện</string>
     <string name="all_day">Cả ngày</string>
-    <string name="from">Bắt đầu:</string>
+    <string name="from">Từ:</string>
     <string name="day">Ngày</string>
-    <string name="to">Kết thúc:</string>
+    <string name="to">Tới:</string>
     <string name="description">Mô tả</string>
     <string name="organizer">Người tổ chức</string>
     <string name="location">Địa điểm</string>

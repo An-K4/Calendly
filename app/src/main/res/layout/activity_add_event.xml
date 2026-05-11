@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/bg_rounded"
+                android:background="@drawable/border_container"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -176,7 +176,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/bg_rounded"
+                android:background="@drawable/border_container"
                 android:orientation="vertical"
                 android:padding="10dp">
 
