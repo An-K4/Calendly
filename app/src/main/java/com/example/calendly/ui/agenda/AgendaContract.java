@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface AgendaContract {
      interface View {
-        void showAgenda(List<AgendaItem> items);
+        void updateAgenda(List<AgendaItem> items);
         void showEmptyState();
         void updateYearSelector(List<Integer> years, int currentYear);
     }
 
     interface Presenter {
-         void loadYears();
+         void loadYears(int currentYear);
          void loadAgendaByYear(int year);
          void onEventClicked(int eventId);
     }

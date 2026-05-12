@@ -2,6 +2,7 @@ package com.example.calendly.ui.agenda;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.example.calendly.data.model.Event;
 import com.example.calendly.data.repository.EventRepository;
@@ -23,14 +24,13 @@ public class AgendaPresenter implements AgendaContract.Presenter{
     }
 
     @Override
-    public void loadYears() {
-        int currentYear = LocalDate.now().getYear();
+    public void loadYears(int currentYear) {
         ArrayList<Integer> years = new ArrayList<>();
-
         for (int i = Math.max(1970, currentYear - 10); i <= currentYear + 10; i++ ){
             years.add(i);
         }
 
+        Log.d("years array", years.toString());
         view.updateYearSelector(years, currentYear);
     }
 
@@ -67,7 +67,7 @@ public class AgendaPresenter implements AgendaContract.Presenter{
 
             mainHandler.post(() -> {
                 if (agendaItems.isEmpty()) view.showEmptyState();
-                else view.showAgenda(agendaItems);
+                else view.updateAgenda(agendaItems);
             });
         });
     }
