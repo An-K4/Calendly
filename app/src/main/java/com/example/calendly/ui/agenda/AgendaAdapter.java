@@ -20,10 +20,18 @@ import java.util.List;
 public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<AgendaItem> items;
     private OnItemClickListener onItemClickListener;
+    private int selectedPosition = -1;
 
     public AgendaAdapter(List<AgendaItem> items, OnItemClickListener onItemClickListener) {
         this.items = items;
         this.onItemClickListener = onItemClickListener;
+    }
+
+    public void setSelectedPosition(int selectedPosition) {
+        int old = this.selectedPosition;
+        this.selectedPosition = selectedPosition;
+        notifyItemChanged(old);
+        notifyItemChanged(selectedPosition);
     }
 
     @NonNull
@@ -42,14 +50,12 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Log.d("agenda", items.toString());
-
         if (holder instanceof DateHeaderViewHolder) {
             ((DateHeaderViewHolder) holder).bind((items.get(position)).date);
         } else if (holder instanceof EventViewHolder) {
             ((EventViewHolder) holder).bind((items.get(position)).event);
 
-            if (onItemClickListener != null){
+            if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(items.get(position));
             }
         }
@@ -58,6 +64,15 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (items.get(position).type == AgendaItem.TYPE_DATE_HEADER) {
+            return AgendaItem.TYPE_DATE_HEADER;
+        } else {
+            return AgendaItem.TYPE_EVENT;
+        }
     }
 
     public interface OnItemClickListener {
@@ -73,9 +88,11 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
 
         void bind(LocalDate date) {
-            binding.tvDateHeader.setText(
-                    date.format(DateTimeFormatter.ofPattern("EEEE, dd/MM/yyyy"))
-            );
+            if (date != null) {
+                binding.tvDateHeader.setText(
+                        date.format(DateTimeFormatter.ofPattern("EEEE, dd/MM/yyyy"))
+                );
+            }
         }
     }
 
@@ -91,7 +108,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             binding.tvAgendaStartTime.setText(formatTime(event.startTimeMillis));
             binding.tvAgendaEndTime.setText(formatTime(event.endTimeMillis));
             binding.tvAgendaTitle.setText(event.title);
-            binding.tvAgendaLocation.setText(event.location);
+            binding.tvAgendaLocation.setText(event.location.isBlank() ? "Không có địa điểm." : event.location);
         }
     }
 
@@ -101,7 +118,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 .format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
-    public void updateData(List<AgendaItem> newAgendaItems){
+    public void updateData(List<AgendaItem> newAgendaItems) {
         this.items.clear();
         this.items.addAll(newAgendaItems);
         notifyDataSetChanged();
