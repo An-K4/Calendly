@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_agenda"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name="com.example.calendly.ui.agenda.AgendaFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btn_prev_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_year_rounded_selector"
+            android:layout_marginHorizontal="10dp"
+            android:contentDescription="@string/arrow_previous_year"
+            android:src="@drawable/ic_arrow_left" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_years"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <ImageButton
+            android:id="@+id/btn_next_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_year_rounded_selector"
+            android:layout_marginHorizontal="10dp"
+            android:contentDescription="@string/arrow_next_year"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_agenda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tv_no_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_event"
+            android:textColor="@color/gray"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:visibility="gone"/>
+    </FrameLayout>
+</LinearLayout>

@@ -25,4 +25,7 @@
     <string name="notification_before_event">Thông báo</string>
     <string name="week">Tuần</string>
     <string name="disable_notification">Tắt thông báo</string>
+    <string name="arrow_previous_year">arrow previous year</string>
+    <string name="arrow_next_year">arrow next year</string>
+    <string name="no_event">Không có sự kiện.</string>
 </resources>
