@@ -10,14 +10,14 @@ public class AgendaItem {
 
     public int type;
     public LocalDate date;
-    public Event event;
+    public AgendaEvent event;
 
     public AgendaItem(int type, LocalDate date) {
         this.type = type;
         this.date = date;
     }
 
-    public AgendaItem(int type, Event event) {
+    public AgendaItem(int type, AgendaEvent event) {
         this.type = type;
         this.event = event;
     }

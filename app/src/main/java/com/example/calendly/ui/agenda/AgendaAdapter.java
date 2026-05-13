@@ -104,11 +104,11 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.binding = binding;
         }
 
-        void bind(Event event) {
-            binding.tvAgendaStartTime.setText(formatTime(event.startTimeMillis));
-            binding.tvAgendaEndTime.setText(formatTime(event.endTimeMillis));
-            binding.tvAgendaTitle.setText(event.title);
-            binding.tvAgendaLocation.setText(event.location.isBlank() ? "Không có địa điểm." : event.location);
+        void bind(AgendaEvent agendaEvent) {
+            binding.tvAgendaStartTime.setText(formatTime(agendaEvent.startTimeDisplay));
+            binding.tvAgendaEndTime.setText(formatTime(agendaEvent.endTimeDisplay));
+            binding.tvAgendaTitle.setText(agendaEvent.event.title);
+            binding.tvAgendaLocation.setText(agendaEvent.event.location.isBlank() ? "Không có địa điểm." : agendaEvent.event.location);
         }
     }
 
