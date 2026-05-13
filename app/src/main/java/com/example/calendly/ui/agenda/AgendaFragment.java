@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,7 +53,6 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
         agendaAdapter = new AgendaAdapter(new ArrayList<>(), item -> {
             // in development
-            Toast.makeText(getContext(), "In development", Toast.LENGTH_SHORT).show();
         });
         binding.rvAgenda.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvAgenda.setAdapter(agendaAdapter);
@@ -87,15 +85,19 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
         AgendaItem today = new AgendaItem(AgendaItem.TYPE_DATE_HEADER, LocalDate.now());
         int todayPosition = items.indexOf(today);
+        // int todayPosition = findScrollPositionAgenda(items);
 
         agendaAdapter.updateData(items);
         agendaAdapter.setSelectedPosition(todayPosition);
-        binding.rvAgenda.scrollToPosition(todayPosition);
 
-//        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) binding.rvAgenda.getLayoutManager();
-//        if (linearLayoutManager != null){
-//            binding.rvAgenda.post(() -> linearLayoutManager.scrollToPosition(todayPosition));
-//        }
+        // this scrollToPosition method below only ensures the header is visible on the screen
+        // can be at the bottom of the list, as long as it is seen
+        // binding.rvAgenda.scrollToPosition(todayPosition);
+
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) binding.rvAgenda.getLayoutManager();
+        if (linearLayoutManager != null){
+            binding.rvAgenda.post(() -> linearLayoutManager.scrollToPositionWithOffset(todayPosition, 0));
+        }
     }
 
     @Override
@@ -125,4 +127,22 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
             }
         });
     }
+
+//    // auto scroll agenda way 2: find scroll position of today header - way 1 in AgendaItem.java
+//    private int findScrollPositionAgenda(List<AgendaItem> items){
+//        LocalDate today = LocalDate.now();
+//        int scrollPosition = -1;
+//
+//        for (int i = 0; i < items.size(); i++){
+//            AgendaItem item = items.get(i);
+//
+//            if (item.type != AgendaItem.TYPE_DATE_HEADER) continue;
+//            if (item.date.equals(today)) return i;
+//            if (item.date.isAfter(today) && scrollPosition == -1) scrollPosition = i;
+//        }
+//
+//        // today header doesn't exist -> return closest future header posision
+//        // if no future header -> return first item position of the list -> no scroll
+//        return scrollPosition == -1 ? 0 : scrollPosition;
+//    }
 }
