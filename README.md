@@ -664,21 +664,21 @@ MainActivity (BottomNavigationView)
 - [✓] Presenter gọi `repository.saveEvent(event)` trên background thread
 
 ### Ngày 11–13: Màn hình Agenda (Xem sự kiện theo năm)
-- [ ] Tạo `AgendaFragment` + `AgendaContract` + `AgendaPresenter`
-- [ ] Layout `fragment_agenda.xml`:
-    - Toolbar: nút ◀ ▶ + HorizontalRecyclerView chọn năm (từ `năm hiện tại - 5` đến `năm sự kiện xa nhất + 5`)
+- [✓] Tạo `AgendaFragment` + `AgendaContract` + `AgendaPresenter`
+- [✓] Layout `fragment_agenda.xml`:
+    - 2 nút ◀ ▶ + HorizontalRecyclerView chọn năm (từ `năm hiện tại - 10` đến `năm sự kiện xa nhất + 10`)
     - RecyclerView dọc chính: 2 ViewType — `TYPE_HEADER` (ngày) và `TYPE_EVENT` (sự kiện)
-- [ ] `AgendaAdapter.java` với Multiple ViewType + `AgendaListItem` (abstract), `AgendaHeaderItem`, `AgendaEventItem`
-- [ ] `YearSelectorAdapter.java` + `item_year.xml`
-- [ ] `item_agenda_header.xml` + `item_agenda_event.xml`
-- [ ] Presenter: group event theo ngày (TreeMap), build danh sách phẳng, tính range năm từ DB
-- [ ] Gắn vào tab tương ứng trong `MainActivity`
+- [✓] `AgendaAdapter.java` với Multiple ViewType + `AgendaItem`, `AgendaItem.TYPE_DATE_HEADER`, `AgendaItem.TYPE_EVENT`
+- [✓] `YearAdapter.java` + `year_item.xml`
+- [✓] `date_header_item.xml` + `event_item.xml`
+- [✓] Presenter: group event theo ngày (TreeMap), build danh sách phẳng, tính range năm từ DB
+- [✓] Gắn vào tab tương ứng trong `MainActivity`
 
 ### Ngày 14: Kết nối & test
-- [ ] Tạo sự kiện → xem trong DayView → xác nhận data đúng
-- [ ] Xử lý case: không có sự kiện (empty state)
+- [✓] Tạo sự kiện → xem trong AgendaFragment → xác nhận data đúng
+- [✓] Xử lý case: không có sự kiện (empty state)
 
-**✅ Checkpoint tuần 2:** Tạo sự kiện, lưu, xem được theo ngày.
+**✅ Checkpoint tuần 2:** Tạo sự kiện, lưu, xem được theo năm (agenda screen).
 
 ---
 
