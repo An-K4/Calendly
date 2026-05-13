@@ -32,7 +32,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
             years.add(i);
         }
 
-        Log.d("years array", years.toString());
+        Log.d("current year", String.valueOf(currentYear));
         view.updateYearSelector(years, currentYear);
     }
 
@@ -51,7 +51,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
                 .toEpochMilli();
 
         repository.getEventsBetween(startYearMillis, endYearMillis, events -> {
-            // use TreeMap to save multi day events, wrapper AgendaEvent to custom start and end time
+            // use TreeMap to save multi day events for rendering, wrapper AgendaEvent to custom start and end time
             TreeMap<LocalDate, List<AgendaEvent>> eventsByDate = new TreeMap<>();
 
             for (Event event : events) {
