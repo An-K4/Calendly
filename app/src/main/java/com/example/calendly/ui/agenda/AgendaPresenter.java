@@ -50,7 +50,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
                 .toInstant()
                 .toEpochMilli();
 
-        repository.getEventsBetween(startYearMillis, endYearMillis, events -> {
+        repository.getEventsIntersecting(startYearMillis, endYearMillis, events -> {
             // use TreeMap to save multi day events for rendering, wrapper AgendaEvent to custom start and end time
             TreeMap<LocalDate, List<AgendaEvent>> eventsByDate = new TreeMap<>();
 

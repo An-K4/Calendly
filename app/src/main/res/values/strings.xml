@@ -30,4 +30,5 @@
     <string name="arrow_previous_year">arrow previous year</string>
     <string name="arrow_next_year">arrow next year</string>
     <string name="no_event">Không có sự kiện.</string>
+    <string name="events_of_day">Sự kiện trong ngày</string>
 </resources>
