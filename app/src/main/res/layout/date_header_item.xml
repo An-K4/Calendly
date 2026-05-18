@@ -10,5 +10,5 @@
         android:layout_height="match_parent"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/event_work"/>
+        android:textColor="@color/primary"/>
 </LinearLayout>

@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/purple"
+            android:backgroundTint="@color/primary"
             android:contentDescription="@string/add_new_event"
             android:padding="16dp"
             android:src="@drawable/ic_add"
@@ -38,6 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/primary"
         app:menu="@menu/bottom_nav_menu"/>
 </LinearLayout>
