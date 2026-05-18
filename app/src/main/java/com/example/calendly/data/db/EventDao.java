@@ -14,8 +14,8 @@ public interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertEvent(Event event);
 
-    @Query("SELECT * FROM events WHERE startTimeMillis >= :start AND startTimeMillis <= :end ORDER BY startTimeMillis ASC")
-    List<Event> getEventsBetween(long start, long end);
+    @Query("SELECT * FROM events WHERE startTimeMillis <= :end AND endTimeMillis >= :start ORDER BY startTimeMillis ASC")
+    List<Event> getEventsIntersecting(long start, long end);
 
     @Query("DELETE FROM events WHERE id = :eventId")
     void deleteEvent(int eventId);

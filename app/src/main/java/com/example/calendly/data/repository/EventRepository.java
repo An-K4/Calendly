@@ -28,9 +28,9 @@ public class EventRepository {
         executorService.execute(() -> eventDao.insertEvent(event));
     }
 
-    public void getEventsBetween(long start, long end, DataCallBack<List<Event>> callBack) {
+    public void getEventsIntersecting(long start, long end, DataCallBack<List<Event>> callBack) {
         executorService.execute(() -> {
-            List<Event> events = eventDao.getEventsBetween(start, end);
+            List<Event> events = eventDao.getEventsIntersecting(start, end);
             callBack.onDataLoaded(events);
         });
     }
